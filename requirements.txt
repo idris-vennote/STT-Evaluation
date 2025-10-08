@@ -1,0 +1,13 @@
+streamlit
+pandas
+numpy
+jiwer
+scikit-learn
+pydub
+matplotlib
+openpyxl
+plotly==5.24.1
+spitch
+openai
+python-dotenv
+audio-recorder-streamlit

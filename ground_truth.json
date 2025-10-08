@@ -1,0 +1,638 @@
+{
+  "yoruba": {
+    "yoruba_short_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.2,
+        "accuracy": 95.5
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.8,
+        "accuracy": 97.2
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_short_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.1,
+        "accuracy": 92.3
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.9,
+        "accuracy": 94.8
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_short_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.3,
+        "accuracy": 88.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 1.0,
+        "accuracy": 91.5
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_short_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.0,
+        "accuracy": 96.1
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.7,
+        "accuracy": 93.4
+      },
+      "better_model": "spitch"
+    },
+    "yoruba_short_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.4,
+        "accuracy": 90.8
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.9,
+        "accuracy": 89.2
+      },
+      "better_model": "spitch"
+    },
+    "yoruba_medium_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.2,
+        "accuracy": 87.4
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.8,
+        "accuracy": 92.1
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_medium_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.5,
+        "accuracy": 85.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 3.1,
+        "accuracy": 88.7
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_medium_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.0,
+        "accuracy": 93.2
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.9,
+        "accuracy": 90.5
+      },
+      "better_model": "spitch"
+    },
+    "yoruba_medium_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.3,
+        "accuracy": 89.6
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.7,
+        "accuracy": 91.8
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_medium_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.1,
+        "accuracy": 91.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 3.0,
+        "accuracy": 87.3
+      },
+      "better_model": "spitch"
+    },
+    "yoruba_long_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.2,
+        "accuracy": 84.3
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.1,
+        "accuracy": 88.9
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_long_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 7.8,
+        "accuracy": 86.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 6.9,
+        "accuracy": 90.4
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_long_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.5,
+        "accuracy": 82.1
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.3,
+        "accuracy": 87.6
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_long_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.1,
+        "accuracy": 88.4
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 6.8,
+        "accuracy": 91.2
+      },
+      "better_model": "awarri"
+    },
+    "yoruba_long_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.7,
+        "accuracy": 85.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.5,
+        "accuracy": 89.3
+      },
+      "better_model": "awarri"
+    }
+  },
+  "igbo": {
+    "igbo_short_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.1,
+        "accuracy": 94.2
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.9,
+        "accuracy": 96.8
+      },
+      "better_model": "awarri"
+    },
+    "igbo_short_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.0,
+        "accuracy": 91.5
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.8,
+        "accuracy": 93.7
+      },
+      "better_model": "awarri"
+    },
+    "igbo_short_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.2,
+        "accuracy": 89.3
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 1.1,
+        "accuracy": 92.1
+      },
+      "better_model": "awarri"
+    },
+    "igbo_short_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 0.9,
+        "accuracy": 95.8
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.7,
+        "accuracy": 94.3
+      },
+      "better_model": "spitch"
+    },
+    "igbo_short_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.3,
+        "accuracy": 92.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.8,
+        "accuracy": 90.4
+      },
+      "better_model": "spitch"
+    },
+    "igbo_medium_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.1,
+        "accuracy": 86.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.9,
+        "accuracy": 91.6
+      },
+      "better_model": "awarri"
+    },
+    "igbo_medium_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.4,
+        "accuracy": 84.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 3.2,
+        "accuracy": 87.5
+      },
+      "better_model": "awarri"
+    },
+    "igbo_medium_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 2.8,
+        "accuracy": 92.8
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 3.0,
+        "accuracy": 89.2
+      },
+      "better_model": "spitch"
+    },
+    "igbo_medium_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.2,
+        "accuracy": 88.5
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.6,
+        "accuracy": 90.9
+      },
+      "better_model": "awarri"
+    },
+    "igbo_medium_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.0,
+        "accuracy": 90.4
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.8,
+        "accuracy": 86.8
+      },
+      "better_model": "spitch"
+    },
+    "igbo_long_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.0,
+        "accuracy": 83.6
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 6.9,
+        "accuracy": 87.4
+      },
+      "better_model": "awarri"
+    },
+    "igbo_long_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 7.9,
+        "accuracy": 85.8
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.2,
+        "accuracy": 89.7
+      },
+      "better_model": "awarri"
+    },
+    "igbo_long_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.3,
+        "accuracy": 81.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.0,
+        "accuracy": 86.2
+      },
+      "better_model": "awarri"
+    },
+    "igbo_long_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.2,
+        "accuracy": 87.3
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 6.7,
+        "accuracy": 90.8
+      },
+      "better_model": "awarri"
+    },
+    "igbo_long_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.6,
+        "accuracy": 84.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.4,
+        "accuracy": 88.5
+      },
+      "better_model": "awarri"
+    }
+  },
+  "hausa": {
+    "hausa_short_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.0,
+        "accuracy": 95.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.8,
+        "accuracy": 97.3
+      },
+      "better_model": "awarri"
+    },
+    "hausa_short_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.1,
+        "accuracy": 93.2
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.9,
+        "accuracy": 95.1
+      },
+      "better_model": "awarri"
+    },
+    "hausa_short_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.2,
+        "accuracy": 90.8
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 1.0,
+        "accuracy": 93.4
+      },
+      "better_model": "awarri"
+    },
+    "hausa_short_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 0.9,
+        "accuracy": 96.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.7,
+        "accuracy": 94.6
+      },
+      "better_model": "spitch"
+    },
+    "hausa_short_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 1.3,
+        "accuracy": 91.5
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 0.8,
+        "accuracy": 89.7
+      },
+      "better_model": "spitch"
+    },
+    "hausa_medium_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.3,
+        "accuracy": 88.1
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.7,
+        "accuracy": 92.8
+      },
+      "better_model": "awarri"
+    },
+    "hausa_medium_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.6,
+        "accuracy": 85.4
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 3.1,
+        "accuracy": 88.9
+      },
+      "better_model": "awarri"
+    },
+    "hausa_medium_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 2.9,
+        "accuracy": 93.7
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.8,
+        "accuracy": 90.3
+      },
+      "better_model": "spitch"
+    },
+    "hausa_medium_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.4,
+        "accuracy": 87.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.5,
+        "accuracy": 91.2
+      },
+      "better_model": "awarri"
+    },
+    "hausa_medium_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 3.2,
+        "accuracy": 92.1
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 2.9,
+        "accuracy": 88.6
+      },
+      "better_model": "spitch"
+    },
+    "hausa_long_1.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.4,
+        "accuracy": 82.9
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.2,
+        "accuracy": 87.8
+      },
+      "better_model": "awarri"
+    },
+    "hausa_long_2.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.1,
+        "accuracy": 85.6
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.0,
+        "accuracy": 89.4
+      },
+      "better_model": "awarri"
+    },
+    "hausa_long_3.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.7,
+        "accuracy": 80.8
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.1,
+        "accuracy": 85.9
+      },
+      "better_model": "awarri"
+    },
+    "hausa_long_4.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.3,
+        "accuracy": 86.2
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 6.9,
+        "accuracy": 90.1
+      },
+      "better_model": "awarri"
+    },
+    "hausa_long_5.wav": {
+      "ground_truth": "Your ground truth transcription here",
+      "spitch": {
+        "transcription": "Spitch transcription result",
+        "latency": 8.9,
+        "accuracy": 84.1
+      },
+      "awarri": {
+        "transcription": "Awarri transcription result",
+        "latency": 7.6,
+        "accuracy": 87.9
+      },
+      "better_model": "awarri"
+    }
+  }
+}
