@@ -1,7 +1,5 @@
 # Transcription API Comparison: Spitch vs Awarri
 
-![Transcription API Comparison](https://via.placeholder.com/800x200/4ecdc4/ffffff?text=Spitch+vs+Awarri) <!-- Replace with actual banner image if available -->
-
 This Streamlit application provides a comprehensive comparison between two transcription APIs—**Spitch AI** and **Awarri**—focusing on their performance in transcribing Nigerian native languages: **Yoruba**, **Igbo**, and **Hausa**. The app evaluates accuracy (semantic similarity to ground truth via GPT-4) and latency (response time), with dynamic weighting for overall performance scoring.
 
 ## Features
