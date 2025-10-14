@@ -351,8 +351,8 @@ def live_testing_tab():
                         else:
                             st.error(results['awarri']['transcription'])
                     
-                    # English translations
-                    if results['spitch']['status'] == 'success' or results['awarri']['status'] == 'success':
+                    # English translations (only for non-English languages)
+                    if language.lower() != "english" and (results['spitch']['status'] == 'success' or results['awarri']['status'] == 'success'):
                         st.subheader("English Translations")
                         
                         _, _, openai_client = initialize_api_clients()
@@ -610,11 +610,11 @@ def create_detailed_metrics_table(language_data):
 def main():
     # Title and description
     st.title("🎤 Transcription API Comparison")
-    st.subheader("Spitch AI vs Awarri - Nigerian Native Languages")
+    st.subheader("Spitch AI vs Awarri - Nigerian Native Languages & English")
     
     st.markdown("""
     This application compares the performance of **Spitch AI** and **Awarri** transcription APIs 
-    across three Nigerian native languages: **Yoruba**, **Igbo**, and **Hausa**.
+    across three Nigerian native languages (**Yoruba**, **Igbo**, **Hausa**) and **English**.
     
     Each language is tested with short, medium, and long audio samples to evaluate:
     - **Accuracy**: GPT-4 scored semantic similarity to ground truth (0-100%)
@@ -628,13 +628,14 @@ def main():
     if not data:
         st.stop()
     
-    # Language tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["🇳🇬 Yoruba", "🇳🇬 Igbo", "🇳🇬 Hausa", "🎙️ Live Test"])
+    # Language tabs - Added English tab
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🇳🇬 Yoruba", "🇳🇬 Igbo", "🇳🇬 Hausa", "🇬🇧 English", "🎙️ Live Test"])
     
     languages = [
         ("yoruba", "Yoruba", tab1),
         ("igbo", "Igbo", tab2),
-        ("hausa", "Hausa", tab3)
+        ("hausa", "Hausa", tab3),
+        ("english", "English", tab4)
     ]
     
     for lang_key, lang_name, tab in languages:
@@ -749,7 +750,7 @@ def main():
                         display_audio_comparison(filename, file_data, audio_base_path)
     
     # Live Test Tab
-    with tab4:
+    with tab5:
         live_testing_tab()
 
 if __name__ == "__main__":
