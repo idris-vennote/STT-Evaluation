@@ -724,5 +724,247 @@
       },
       "better_model": "spitch"
     }
+  },
+  "english": {
+    "english_short_1.wav": {
+      "ground_truth": "How much airtime is left in my account?",
+      "awarri": {
+        "transcription": "how much air time is left in my account?",
+        "translation": "how much air time is left in my account?",
+        "latency": 7.95,
+        "accuracy": 95.0
+      },
+      "spitch": {
+        "transcription": "How much time is left in my account?",
+        "translation": "How much time is left in my account?",
+        "latency": 2.4,
+        "accuracy": 85.0
+      },
+      "better_model": "spitch"
+    },
+    "english_short_2.wav": {
+      "ground_truth": "Can you check my current data balance now?",
+      "awarri": {
+        "transcription": "can you check my current data balance now?",
+        "translation": "can you check my current data balance now?",
+        "latency": 4.73,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "Can you check my current data balance now?",
+        "translation": "Can you check my current data balance now?",
+        "latency": 1.63,
+        "accuracy": 100.0
+      },
+      "better_model": "spitch"
+    },
+    "english_short_3.wav": {
+      "ground_truth": "What's the status of my MTN account today?",
+      "awarri": {
+        "transcription": "what's the status of my mtn account today?",
+        "translation": "what's the status of my mtn account today?",
+        "latency": 4.67,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "What's the status of my MCN account today?",
+        "translation": "What's the status of my MCN account today?",
+        "latency": 1.84,
+        "accuracy": 85.0
+      },
+      "better_model": "spitch"
+    },
+    "english_short_4.wav": {
+      "ground_truth": "I need to contact MTN customer support now.",
+      "awarri": {
+        "transcription": "i need to contact mtn support now.",
+        "translation": "i need to contact mtn support now.",
+        "latency": 4.56,
+        "accuracy": 95.0
+      },
+      "spitch": {
+        "transcription": "I need to contact MTA support now.",
+        "translation": "I need to contact MTA support now.",
+        "latency": 1.55,
+        "accuracy": 70.0
+      },
+      "better_model": "spitch"
+    },
+    "english_short_5.wav": {
+      "ground_truth": "How do I buy 1GB of data today?",
+      "awarri": {
+        "transcription": "how can i buy 1 gb of data today?",
+        "translation": "how can i buy 1 gb of data today?",
+        "latency": 4.72,
+        "accuracy": 95.0
+      },
+      "spitch": {
+        "transcription": "How can I buy one gigabyte of data today?",
+        "translation": "How can I buy one gigabyte of data today?",
+        "latency": 2.33,
+        "accuracy": 95.0
+      },
+      "better_model": "spitch"
+    },
+    "english_medium_1.wav": {
+      "ground_truth": "How can I recharge my MTN phone with airtime quickly?",
+      "awarri": {
+        "transcription": "how can i recharge my empty headphones with airtime quickly?",
+        "translation": "how can i recharge my empty headphones with airtime quickly?",
+        "latency": 4.9,
+        "accuracy": 10.0
+      },
+      "spitch": {
+        "transcription": "How can I recharge my MTN phone with airtime quickly?",
+        "translation": "How can I recharge my MTN phone with airtime quickly?",
+        "latency": 1.69,
+        "accuracy": 100.0
+      },
+      "better_model": "spitch"
+    },
+    "english_medium_2.wav": {
+      "ground_truth": "What's the cheapest data bundle available for a week?",
+      "awarri": {
+        "transcription": "what's the cheapest data bundle available for a week?",
+        "translation": "what's the cheapest data bundle available for a week?",
+        "latency": 4.53,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "What's the cheapest these are born to live really boom for a week",
+        "translation": "What's the cheapest these are born to live really boom for a week",
+        "latency": 1.89,
+        "accuracy": 10.0
+      },
+      "better_model": "awarri"
+    },
+    "english_medium_3.wav": {
+      "ground_truth": "Can I transfer money to another MTN number easily?",
+      "awarri": {
+        "transcription": "can i transfer money to another mtn number easily?",
+        "translation": "can i transfer money to another mtn number easily?",
+        "latency": 7.73,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "Can I transfer money to another MCN number easily?",
+        "translation": "Can I transfer money to another MCN number easily?",
+        "latency": 1.69,
+        "accuracy": 85.0
+      },
+      "better_model": "spitch"
+    },
+    "english_medium_4.wav": {
+      "ground_truth": "Why is my network signal so weak in this area?",
+      "awarri": {
+        "transcription": "why is my network signal so weak in this area?",
+        "translation": "why is my network signal so weak in this area?",
+        "latency": 6.89,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "Why is my network signal so weak in this area?",
+        "translation": "Why is my network signal so weak in this area?",
+        "latency": 2.41,
+        "accuracy": 100.0
+      },
+      "better_model": "spitch"
+    },
+    "english_medium_5.wav": {
+      "ground_truth": "Please check my MTN bill for the last month.",
+      "awarri": {
+        "transcription": "please check my mtn bill for last month.",
+        "translation": "please check my mtn bill for last month.",
+        "latency": 4.46,
+        "accuracy": 95.0
+      },
+      "spitch": {
+        "transcription": "Please check my MCM view for last month.",
+        "translation": "Please check my MCM view for last month.",
+        "latency": 1.35,
+        "accuracy": 30.0
+      },
+      "better_model": "awarri"
+    },
+    "english_long_1.wav": {
+      "ground_truth": "I've been overcharged for international calls I didn't make; can you investigate and process a refund for me please?",
+      "awarri": {
+        "transcription": "i've been charged for intentional cause that didn't make. can you investigate this and process a refund for me, please?",
+        "translation": "i've been charged for intentional cause that didn't make. can you investigate this and process a refund for me, please?",
+        "latency": 6.03,
+        "accuracy": 45.0
+      },
+      "spitch": {
+        "transcription": "I've been charged for international cause at DMMIC. Can you investigate this and process a refund for me please?",
+        "translation": "I've been charged for international cause at DMMIC. Can you investigate this and process a refund for me please?",
+        "latency": 1.94,
+        "accuracy": 70.0
+      },
+      "better_model": "spitch"
+    },
+    "english_long_2.wav": {
+      "ground_truth": "I want to upgrade my plan to include more data and unlimited calls; what's the best option for heavy users?",
+      "awarri": {
+        "transcription": "i want to upgrade my plan to include more data and unlimited calls. what's the best option for heavy users?",
+        "translation": "i want to upgrade my plan to include more data and unlimited calls. what's the best option for heavy users?",
+        "latency": 7.84,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "I want to upgrade my plan to include more data on unlimited calls. What's the best option for heavy users?",
+        "translation": "I want to upgrade my plan to include more data on unlimited calls. What's the best option for heavy users?",
+        "latency": 2.15,
+        "accuracy": 95.0
+      },
+      "better_model": "spitch"
+    },
+    "english_long_3.wav": {
+      "ground_truth": "My phone isn't receiving texts from other networks despite restarting twice; what steps can I take to fix this?",
+      "awarri": {
+        "transcription": "my phone isn't receiving text from other networks despite restarting twice. what steps can i take to fix this?",
+        "translation": "my phone isn't receiving text from other networks despite restarting twice. what steps can i take to fix this?",
+        "latency": 7.97,
+        "accuracy": 98.5
+      },
+      "spitch": {
+        "transcription": "My phone isn't receiving texts from other networks, despite restarting twice. What steps can I take to fix this?",
+        "translation": "My phone isn't receiving texts from other networks, despite restarting twice. What steps can I take to fix this?",
+        "latency": 2.9,
+        "accuracy": 100.0
+      },
+      "better_model": "spitch"
+    },
+    "english_long_4.wav": {
+      "ground_truth": "Can you explain the roaming charges from my Kenya trip last week and how to avoid them next time?",
+      "awarri": {
+        "transcription": "can you explain the roaming charges from my kenya trip last week and how to avoid them next time?",
+        "translation": "can you explain the roaming charges from my kenya trip last week and how to avoid them next time?",
+        "latency": 5.31,
+        "accuracy": 100.0
+      },
+      "spitch": {
+        "transcription": "Can you explain the roaming charges for my Kenya trip last week and how to avoid them next time?",
+        "translation": "Can you explain the roaming charges for my Kenya trip last week and how to avoid them next time?",
+        "latency": 2.07,
+        "accuracy": 95.0
+      },
+      "better_model": "spitch"
+    },
+    "english_long_5.wav": {
+      "ground_truth": "I'm setting up a new MTN SIM for my business; what bundles are best for high-volume SMS and calls?",
+      "awarri": {
+        "transcription": "i'm setting up a new mtn scene for my business. what bundles are best for high-volume sms and calls?",
+        "translation": "i'm setting up a new mtn scene for my business. what bundles are best for high-volume sms and calls?",
+        "latency": 6.01,
+        "accuracy": 85.0
+      },
+      "spitch": {
+        "transcription": "I'm setting up a new MTN scene for my business. What bundles are best for high-volume SMS and calls?",
+        "translation": "I'm setting up a new MTN scene for my business. What bundles are best for high-volume SMS and calls?",
+        "latency": 2.17,
+        "accuracy": 85.0
+      },
+      "better_model": "spitch"
+    }
   }
 }
