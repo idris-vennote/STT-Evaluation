@@ -4,13 +4,15 @@ import json
 import os
 import time
 import tempfile
+import base64
+import requests
 from pathlib import Path
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from dotenv import load_dotenv
 from openai import OpenAI
-from audio_recorder_streamlit import audio_recorder
+#from audio_recorder_streamlit import audio_recorder
 from awagpt import AwaGPT
 from spitch import Spitch
 
@@ -49,7 +51,7 @@ def load_transcription_data():
 def initialize_api_clients():
     """Initialize API clients (cached to avoid reinitializing)"""
     try:
-        # Initialize Awarri
+        # Initialize Awarri (old)
         awarri_client = AwaGPT(os.getenv("AWARRI_API_KEY"))
         
         # Initialize Spitch
@@ -60,10 +62,14 @@ def initialize_api_clients():
         # Initialize OpenAI
         openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         
-        return awarri_client, spitch_client, openai_client
+        # New Awarri API credentials
+        awarri_new_url = os.getenv("AWARRI_NEW_API_URL")
+        awarri_new_key = os.getenv("AWARRI_NEW_API_KEY")
+        
+        return awarri_client, spitch_client, openai_client, awarri_new_url, awarri_new_key
     except Exception as e:
         st.error(f"Failed to initialize API clients: {str(e)}")
-        return None, None, None
+        return None, None, None, None, None
 
 def load_audio_file(file_path):
     """Check if audio file exists and return path"""
@@ -84,34 +90,31 @@ def calculate_weighted_score(accuracy, latency, max_latency, accuracy_weight):
     Returns:
         Weighted score (0-100)
     """
-    # Normalize latency to a speed score (lower latency = higher score)
-    # Avoid division by zero
     if max_latency > 0:
         speed_score = ((max_latency - latency) / max_latency) * 100
     else:
         speed_score = 100
     
-    # Ensure speed_score is between 0 and 100
     speed_score = max(0, min(100, speed_score))
     
-    # Calculate weighted score
     latency_weight = 100 - accuracy_weight
     weighted_score = (accuracy * accuracy_weight / 100) + (speed_score * latency_weight / 100)
     
     return weighted_score
 
-def determine_better_model(spitch_data, awarri_data, max_latency, accuracy_weight):
+def determine_better_model_three_way(spitch_data, awarri_data, awarri_new_data, max_latency, accuracy_weight):
     """
-    Determine which model performed better based on weighted score.
+    Determine which model performed better among three models based on weighted score.
     
     Args:
         spitch_data: Dictionary with spitch accuracy and latency
         awarri_data: Dictionary with awarri accuracy and latency
+        awarri_new_data: Dictionary with awarri_new accuracy and latency
         max_latency: Maximum latency in the dataset
         accuracy_weight: Weight for accuracy (0-100)
     
     Returns:
-        'spitch', 'awarri', or 'tie'
+        'spitch', 'awarri', 'awarri_new', or 'tie'
     """
     spitch_score = calculate_weighted_score(
         spitch_data.get('accuracy', 0),
@@ -127,13 +130,29 @@ def determine_better_model(spitch_data, awarri_data, max_latency, accuracy_weigh
         accuracy_weight
     )
     
-    # Use a small threshold to determine ties
-    if abs(spitch_score - awarri_score) < 1.0:
+    awarri_new_score = calculate_weighted_score(
+        awarri_new_data.get('accuracy', 0),
+        awarri_new_data.get('latency', 0),
+        max_latency,
+        accuracy_weight
+    )
+    
+    scores = {
+        'spitch': spitch_score,
+        'awarri': awarri_score,
+        'awarri_new': awarri_new_score
+    }
+    
+    best_model = max(scores, key=scores.get)
+    best_score = scores[best_model]
+    
+    # Check for ties (within 1.0 threshold)
+    tied_models = [model for model, score in scores.items() if abs(score - best_score) < 1.0]
+    
+    if len(tied_models) > 1:
         return 'tie'
-    elif spitch_score > awarri_score:
-        return 'spitch'
-    else:
-        return 'awarri'
+    
+    return best_model
 
 def recalculate_winners(language_data, accuracy_weight):
     """
@@ -151,37 +170,50 @@ def recalculate_winners(language_data, accuracy_weight):
     for data in language_data.values():
         all_latencies.append(data.get('spitch', {}).get('latency', 0))
         all_latencies.append(data.get('awarri', {}).get('latency', 0))
+        if 'awarri_new' in data:
+            all_latencies.append(data.get('awarri_new', {}).get('latency', 0))
     max_latency = max(all_latencies) if all_latencies else 1
     
     # Update better_model for each file
     updated_data = {}
     for filename, data in language_data.items():
         updated_entry = data.copy()
-        updated_entry['better_model'] = determine_better_model(
-            data.get('spitch', {}),
-            data.get('awarri', {}),
-            max_latency,
-            accuracy_weight
-        )
+        
+        # Only recalculate if all three models exist
+        if 'spitch' in data and 'awarri' in data and 'awarri_new' in data:
+            updated_entry['better_model'] = determine_better_model_three_way(
+                data.get('spitch', {}),
+                data.get('awarri', {}),
+                data.get('awarri_new', {}),
+                max_latency,
+                accuracy_weight
+            )
+        
         updated_data[filename] = updated_entry
     
     return updated_data
 
+def encode_audio_to_base64(file_path):
+    """Read and encode audio file to base64 with required prefix."""
+    with open(file_path, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode("utf-8")
+    return f"data:audio/webm;base64,{encoded}"
+
 def transcribe_with_apis(audio_file_path, language):
-    """Transcribe audio with both APIs and measure latency"""
-    awarri_client, spitch_client, openai_client = initialize_api_clients()
+    """Transcribe audio with all three APIs and measure latency"""
+    awarri_client, spitch_client, openai_client, awarri_new_url, awarri_new_key = initialize_api_clients()
     
     if not all([awarri_client, spitch_client, openai_client]):
-        return None, None
+        return None
     
-    # Language mapping for Spitch
+    # Language mappings
     spitch_language_map = {"yoruba": "yo", "igbo": "ig", "hausa": "ha", "english": "en"}
-    # Language mapping for Awarri
     awarri_language_map = {"yoruba": "yoruba", "igbo": "igbo", "hausa": "hausa", "english": "English"}
+    awarri_new_language_map = {"yoruba": "yoruba", "igbo": "igbo", "hausa": "hausa", "english": "english"}
     
     results = {}
     
-    # Transcribe with Awarri
+    # Transcribe with old Awarri
     try:
         start_time = time.time()
         awarri_response = awarri_client.transcribe_audio(
@@ -224,6 +256,50 @@ def transcribe_with_apis(audio_file_path, language):
             'status': 'error'
         }
     
+    # Transcribe with new Awarri
+    if awarri_new_url and awarri_new_key:
+        try:
+            start_time = time.time()
+            
+            base64_data = encode_audio_to_base64(audio_file_path)
+            
+            payload = {
+                "base64_data": base64_data,
+                "lang": awarri_new_language_map.get(language.lower(), "english")
+            }
+            
+            headers = {
+                "accept": "application/json",
+                "Content-Type": "application/json",
+                "X-API-Key": awarri_new_key
+            }
+            
+            response = requests.post(awarri_new_url, json=payload, headers=headers)
+            response.raise_for_status()
+            
+            awarri_new_latency = time.time() - start_time
+            
+            response_data = response.json()
+            transcription = response_data.get("text", "") or response_data.get("transcription", "") or str(response_data)
+            
+            results['awarri_new'] = {
+                'transcription': transcription,
+                'latency': round(awarri_new_latency, 2),
+                'status': 'success'
+            }
+        except Exception as e:
+            results['awarri_new'] = {
+                'transcription': f"Error: {str(e)}",
+                'latency': 0.0,
+                'status': 'error'
+            }
+    else:
+        results['awarri_new'] = {
+            'transcription': "API credentials not configured",
+            'latency': 0.0,
+            'status': 'error'
+        }
+    
     return results
 
 def translate_text(text, source_language, openai_client):
@@ -257,14 +333,15 @@ def live_testing_tab():
     """Create the live testing tab interface"""
     st.header("Live API Testing")
     st.markdown("""
-    Test both transcription APIs in real-time. Record your audio, select a language, 
-    and compare the results from Spitch and Awarri side by side.
+    Test all three transcription APIs in real-time. Record your audio, select a language, 
+    and compare the results from Spitch, Awarri (old), and Awarri New side by side.
     """)
     
     # Check if API keys are configured
-    if not all([os.getenv("AWARRI_API_KEY"), os.getenv("SPITCH_API_KEY"), os.getenv("OPENAI_API_KEY")]):
+    required_keys = ["AWARRI_API_KEY", "SPITCH_API_KEY", "OPENAI_API_KEY", "AWARRI_NEW_API_URL", "AWARRI_NEW_API_KEY"]
+    if not all([os.getenv(key) for key in required_keys]):
         st.error("API keys not configured. Please check your .env file.")
-        st.info("Required keys: AWARRI_API_KEY, SPITCH_API_KEY, OPENAI_API_KEY")
+        st.info(f"Required keys: {', '.join(required_keys)}")
         return
     
     col1, col2 = st.columns([1, 1])
@@ -282,7 +359,7 @@ def live_testing_tab():
         )
         
         # Transcribe button
-        transcribe_button = st.button("Transcribe with Both APIs", type="primary")
+        transcribe_button = st.button("Transcribe with All APIs", type="primary")
     
     with col2:
         st.subheader("Quick Guide")
@@ -290,7 +367,7 @@ def live_testing_tab():
         **How to use:**
         1. Click the record button and speak clearly
         2. Select the language you spoke in
-        3. Click 'Transcribe with Both APIs'
+        3. Click 'Transcribe with All APIs'
         4. Compare results and performance
         
         **Languages supported:**
@@ -298,11 +375,16 @@ def live_testing_tab():
         - Igbo (Nigerian) 
         - Hausa (Nigerian)
         - English
+        
+        **Models tested:**
+        - Spitch AI
+        - Awarri (Legacy)
+        - Awarri New
         """)
     
     # Process transcription when button is clicked
     if transcribe_button and audio_input:
-        with st.spinner("Transcribing with both APIs..."):
+        with st.spinner("Transcribing with all APIs..."):
             # Save audio to temporary file
             with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp_file:
                 tmp_file.write(audio_input.read())
@@ -319,7 +401,7 @@ def live_testing_tab():
                     st.subheader("Results Comparison")
                     
                     # Performance metrics
-                    col3, col4 = st.columns(2)
+                    col3, col4, col5 = st.columns(3)
                     
                     with col3:
                         st.metric(
@@ -333,33 +415,46 @@ def live_testing_tab():
                             value=f"{results['awarri']['latency']:.2f}s"
                         )
                     
+                    with col5:
+                        st.metric(
+                            label="Awarri New Latency",
+                            value=f"{results['awarri_new']['latency']:.2f}s"
+                        )
+                    
                     # Original transcriptions
                     st.subheader("Original Transcriptions")
-                    col5, col6 = st.columns(2)
+                    col6, col7, col8 = st.columns(3)
                     
-                    with col5:
+                    with col6:
                         st.write("**Spitch Result:**")
                         if results['spitch']['status'] == 'success':
                             st.success(results['spitch']['transcription'])
                         else:
                             st.error(results['spitch']['transcription'])
                     
-                    with col6:
+                    with col7:
                         st.write("**Awarri Result:**")
                         if results['awarri']['status'] == 'success':
                             st.success(results['awarri']['transcription'])
                         else:
                             st.error(results['awarri']['transcription'])
                     
+                    with col8:
+                        st.write("**Awarri New Result:**")
+                        if results['awarri_new']['status'] == 'success':
+                            st.success(results['awarri_new']['transcription'])
+                        else:
+                            st.error(results['awarri_new']['transcription'])
+                    
                     # English translations (only for non-English languages)
-                    if language.lower() != "english" and (results['spitch']['status'] == 'success' or results['awarri']['status'] == 'success'):
+                    if language.lower() != "english":
                         st.subheader("English Translations")
                         
-                        _, _, openai_client = initialize_api_clients()
+                        _, _, openai_client, _, _ = initialize_api_clients()
                         if openai_client:
-                            col7, col8 = st.columns(2)
+                            col9, col10, col11 = st.columns(3)
                             
-                            with col7:
+                            with col9:
                                 st.write("**Spitch Translation:**")
                                 if results['spitch']['status'] == 'success':
                                     spitch_translation = translate_text(
@@ -369,9 +464,9 @@ def live_testing_tab():
                                     )
                                     st.info(spitch_translation)
                                 else:
-                                    st.error("Translation unavailable (transcription failed)")
+                                    st.error("Translation unavailable")
                             
-                            with col8:
+                            with col10:
                                 st.write("**Awarri Translation:**")
                                 if results['awarri']['status'] == 'success':
                                     awarri_translation = translate_text(
@@ -381,21 +476,37 @@ def live_testing_tab():
                                     )
                                     st.info(awarri_translation)
                                 else:
-                                    st.error("Translation unavailable (transcription failed)")
+                                    st.error("Translation unavailable")
+                            
+                            with col11:
+                                st.write("**Awarri New Translation:**")
+                                if results['awarri_new']['status'] == 'success':
+                                    awarri_new_translation = translate_text(
+                                        results['awarri_new']['transcription'], 
+                                        language, 
+                                        openai_client
+                                    )
+                                    st.info(awarri_new_translation)
+                                else:
+                                    st.error("Translation unavailable")
                         else:
                             st.error("OpenAI client not available for translation")
                     
                     # Performance comparison
-                    if results['spitch']['status'] == 'success' and results['awarri']['status'] == 'success':
+                    successful_models = [model for model, data in results.items() if data['status'] == 'success']
+                    if len(successful_models) >= 2:
                         st.subheader("Performance Analysis")
                         
-                        spitch_faster = results['spitch']['latency'] < results['awarri']['latency']
-                        speed_diff = abs(results['spitch']['latency'] - results['awarri']['latency'])
+                        latencies = {model: results[model]['latency'] for model in successful_models}
+                        fastest_model = min(latencies, key=latencies.get)
                         
-                        if spitch_faster:
-                            st.info(f"Spitch was {speed_diff:.2f}s faster than Awarri")
-                        else:
-                            st.info(f"Awarri was {speed_diff:.2f}s faster than Spitch")
+                        model_names = {
+                            'spitch': 'Spitch',
+                            'awarri': 'Awarri (Legacy)',
+                            'awarri_new': 'Awarri New'
+                        }
+                        
+                        st.info(f"🏆 Fastest: {model_names.get(fastest_model, fastest_model)} ({latencies[fastest_model]:.2f}s)")
                 
                 else:
                     st.error("Failed to get transcriptions from APIs")
@@ -411,20 +522,24 @@ def live_testing_tab():
         st.warning("Please record audio before transcribing")
 
 def create_performance_summary(language_data, language_name):
-    """Create performance summary statistics"""
+    """Create performance summary statistics for 3 models"""
     if not language_data:
         return None, None
     
     spitch_accuracies = [data['spitch']['accuracy'] for data in language_data.values() if 'accuracy' in data.get('spitch', {})]
     awarri_accuracies = [data['awarri']['accuracy'] for data in language_data.values() if 'accuracy' in data.get('awarri', {})]
+    awarri_new_accuracies = [data['awarri_new']['accuracy'] for data in language_data.values() if 'accuracy' in data.get('awarri_new', {})]
+    
     spitch_latencies = [data['spitch']['latency'] for data in language_data.values() if 'latency' in data.get('spitch', {})]
     awarri_latencies = [data['awarri']['latency'] for data in language_data.values() if 'latency' in data.get('awarri', {})]
+    awarri_new_latencies = [data['awarri_new']['latency'] for data in language_data.values() if 'latency' in data.get('awarri_new', {})]
     
     if not spitch_accuracies or not awarri_accuracies:
         return None, None
     
     spitch_wins = sum(1 for data in language_data.values() if data.get('better_model') == 'spitch')
     awarri_wins = sum(1 for data in language_data.values() if data.get('better_model') == 'awarri')
+    awarri_new_wins = sum(1 for data in language_data.values() if data.get('better_model') == 'awarri_new')
     ties = sum(1 for data in language_data.values() if data.get('better_model') == 'tie')
     
     summary = {
@@ -438,15 +553,20 @@ def create_performance_summary(language_data, language_name):
             'avg_latency': sum(awarri_latencies) / len(awarri_latencies) if awarri_latencies else 0,
             'wins': awarri_wins
         },
+        'awarri_new': {
+            'avg_accuracy': sum(awarri_new_accuracies) / len(awarri_new_accuracies) if awarri_new_accuracies else 0,
+            'avg_latency': sum(awarri_new_latencies) / len(awarri_new_latencies) if awarri_new_latencies else 0,
+            'wins': awarri_new_wins
+        },
         'ties': ties,
         'total_samples': len(language_data)
     }
     
-    return summary, (spitch_accuracies, awarri_accuracies, spitch_latencies, awarri_latencies)
+    return summary, (spitch_accuracies, awarri_accuracies, awarri_new_accuracies, spitch_latencies, awarri_latencies, awarri_new_latencies)
 
 def create_performance_charts(data_arrays, language_name):
-    """Create performance comparison charts"""
-    spitch_accuracies, awarri_accuracies, spitch_latencies, awarri_latencies = data_arrays
+    """Create performance comparison charts for 3 models"""
+    spitch_accuracies, awarri_accuracies, awarri_new_accuracies, spitch_latencies, awarri_latencies, awarri_new_latencies = data_arrays
     
     sample_names = [f"Sample {i+1}" for i in range(len(spitch_accuracies))]
     
@@ -459,7 +579,7 @@ def create_performance_charts(data_arrays, language_name):
     
     # Accuracy comparison
     fig.add_trace(
-        go.Bar(name='Spitch AI', x=sample_names, y=spitch_accuracies, 
+        go.Bar(name='Spitch', x=sample_names, y=spitch_accuracies, 
                marker_color='#ff6b6b', opacity=0.8),
         row=1, col=1
     )
@@ -468,16 +588,26 @@ def create_performance_charts(data_arrays, language_name):
                marker_color='#4ecdc4', opacity=0.8),
         row=1, col=1
     )
+    fig.add_trace(
+        go.Bar(name='Awarri New', x=sample_names, y=awarri_new_accuracies, 
+               marker_color='#95e1d3', opacity=0.8),
+        row=1, col=1
+    )
     
     # Latency comparison
     fig.add_trace(
-        go.Bar(name='Spitch AI', x=sample_names, y=spitch_latencies, 
+        go.Bar(name='Spitch', x=sample_names, y=spitch_latencies, 
                marker_color='#ff6b6b', opacity=0.8, showlegend=False),
         row=2, col=1
     )
     fig.add_trace(
         go.Bar(name='Awarri', x=sample_names, y=awarri_latencies, 
                marker_color='#4ecdc4', opacity=0.8, showlegend=False),
+        row=2, col=1
+    )
+    fig.add_trace(
+        go.Bar(name='Awarri New', x=sample_names, y=awarri_new_latencies, 
+               marker_color='#95e1d3', opacity=0.8, showlegend=False),
         row=2, col=1
     )
     
@@ -494,7 +624,7 @@ def create_performance_charts(data_arrays, language_name):
     return fig
 
 def display_audio_comparison(filename, data, audio_base_path):
-    """Display individual audio file comparison"""
+    """Display individual audio file comparison for 3 models"""
     st.subheader(f"🎵 {filename}")
     
     # Audio file path
@@ -511,31 +641,28 @@ def display_audio_comparison(filename, data, audio_base_path):
     
     with col2:
         # Performance metrics
-        col2a, col2b = st.columns(2)
+        col2a, col2b, col2c = st.columns(3)
         
         with col2a:
+            st.write("**Spitch**")
             if 'accuracy' in data.get('spitch', {}):
-                st.metric(
-                    label="Spitch Accuracy", 
-                    value=f"{data['spitch']['accuracy']:.1f}%"
-                )
+                st.metric("Accuracy", f"{data['spitch']['accuracy']:.1f}%")
             if 'latency' in data.get('spitch', {}):
-                st.metric(
-                    label="⚡ Spitch Latency", 
-                    value=f"{data['spitch']['latency']:.2f}s"
-                )
+                st.metric("Latency", f"{data['spitch']['latency']:.2f}s")
         
         with col2b:
+            st.write("**Awarri**")
             if 'accuracy' in data.get('awarri', {}):
-                st.metric(
-                    label="Awarri Accuracy", 
-                    value=f"{data['awarri']['accuracy']:.1f}%"
-                )
+                st.metric("Accuracy", f"{data['awarri']['accuracy']:.1f}%")
             if 'latency' in data.get('awarri', {}):
-                st.metric(
-                    label="⚡ Awarri Latency", 
-                    value=f"{data['awarri']['latency']:.2f}s"
-                )
+                st.metric("Latency", f"{data['awarri']['latency']:.2f}s")
+        
+        with col2c:
+            st.write("**Awarri New**")
+            if 'accuracy' in data.get('awarri_new', {}):
+                st.metric("Accuracy", f"{data['awarri_new']['accuracy']:.1f}%")
+            if 'latency' in data.get('awarri_new', {}):
+                st.metric("Latency", f"{data['awarri_new']['latency']:.2f}s")
     
     # Ground Truth
     if data.get('ground_truth'):
@@ -544,45 +671,67 @@ def display_audio_comparison(filename, data, audio_base_path):
     
     # Original Transcriptions
     st.write("**Original Transcriptions:**")
-    col3, col4 = st.columns(2)
+    col3, col4, col5 = st.columns(3)
     
     with col3:
-        st.write("**🤖 Spitch AI Transcription:**")
+        st.write("**Spitch:**")
         if 'transcription' in data.get('spitch', {}):
-            st.text_area("Spitch Transcription", data['spitch']['transcription'], height=100, key=f"spitch_orig_{filename}", disabled=True, label_visibility="hidden")
+            st.text_area("", data['spitch']['transcription'], height=100, key=f"spitch_orig_{filename}", disabled=True, label_visibility="collapsed")
         else:
-            st.warning("No transcription available")
+            st.warning("No transcription")
     
     with col4:
-        st.write("**🤖 Awarri Transcription:**")
+        st.write("**Awarri:**")
         if 'transcription' in data.get('awarri', {}):
-            st.text_area("", data['awarri']['transcription'], height=100, key=f"awarri_orig_{filename}", disabled=True)
+            st.text_area("", data['awarri']['transcription'], height=100, key=f"awarri_orig_{filename}", disabled=True, label_visibility="collapsed")
         else:
-            st.warning("No transcription available")
+            st.warning("No transcription")
+    
+    with col5:
+        st.write("**Awarri New:**")
+        if 'transcription' in data.get('awarri_new', {}):
+            st.text_area("", data['awarri_new']['transcription'], height=100, key=f"awarri_new_orig_{filename}", disabled=True, label_visibility="collapsed")
+        else:
+            st.warning("No transcription")
     
     # English Translations
     st.write("**🌐 English Translations:**")
-    col5, col6 = st.columns(2)
-    
-    with col5:
-        st.write("**Spitch Translation:**")
-        if 'translation' in data.get('spitch', {}):
-            st.text_area("", data['spitch']['translation'], height=100, key=f"spitch_trans_{filename}", disabled=True)
-        else:
-            st.warning("No translation available")
+    col6, col7, col8 = st.columns(3)
     
     with col6:
-        st.write("**Awarri Translation:**")
-        if 'translation' in data.get('awarri', {}):
-            st.text_area("", data['awarri']['translation'], height=100, key=f"awarri_trans_{filename}", disabled=True)
+        st.write("**Spitch:**")
+        if 'translation' in data.get('spitch', {}):
+            st.text_area("", data['spitch']['translation'], height=100, key=f"spitch_trans_{filename}", disabled=True, label_visibility="collapsed")
         else:
-            st.warning("No translation available")
+            st.warning("No translation")
+    
+    with col7:
+        st.write("**Awarri:**")
+        if 'translation' in data.get('awarri', {}):
+            st.text_area("", data['awarri']['translation'], height=100, key=f"awarri_trans_{filename}", disabled=True, label_visibility="collapsed")
+        else:
+            st.warning("No translation")
+    
+    with col8:
+        st.write("**Awarri New:**")
+        if 'translation' in data.get('awarri_new', {}):
+            st.text_area("", data['awarri_new']['translation'], height=100, key=f"awarri_new_trans_{filename}", disabled=True, label_visibility="collapsed")
+        else:
+            st.warning("No translation")
     
     # Better model indicator
+    model_names = {
+        'spitch': 'Spitch',
+        'awarri': 'Awarri (Legacy)',
+        'awarri_new': 'Awarri New'
+    }
+    
     if data.get('better_model') == 'spitch':
-        st.success("🏆 **Winner: Spitch AI** - Better overall performance (weighted score)")
+        st.success(f"🏆 **Winner: {model_names['spitch']}** - Better overall performance (weighted score)")
     elif data.get('better_model') == 'awarri':
-        st.success("🏆 **Winner: Awarri** - Better overall performance (weighted score)")
+        st.success(f"🏆 **Winner: {model_names['awarri']}** - Better overall performance (weighted score)")
+    elif data.get('better_model') == 'awarri_new':
+        st.success(f"🏆 **Winner: {model_names['awarri_new']}** - Better overall performance (weighted score)")
     elif data.get('better_model') == 'tie':
         st.info("🤝 **Result: Tie** - Similar performance")
     else:
@@ -591,16 +740,18 @@ def display_audio_comparison(filename, data, audio_base_path):
     st.divider()
 
 def create_detailed_metrics_table(language_data):
-    """Create a detailed metrics table for all files"""
+    """Create a detailed metrics table for all files with 3 models"""
     rows = []
     for filename, data in language_data.items():
         row = {
             'File': filename,
-            'Spitch Accuracy (%)': data['spitch']['accuracy'],
-            'Awarri Accuracy (%)': data['awarri']['accuracy'],
-            'Spitch Latency (s)': data['spitch']['latency'],
-            'Awarri Latency (s)': data['awarri']['latency'],
-            'Better Model': data['better_model'].title()
+            'Spitch Accuracy (%)': data.get('spitch', {}).get('accuracy', 0),
+            'Awarri Accuracy (%)': data.get('awarri', {}).get('accuracy', 0),
+            'Awarri New Accuracy (%)': data.get('awarri_new', {}).get('accuracy', 0),
+            'Spitch Latency (s)': data.get('spitch', {}).get('latency', 0),
+            'Awarri Latency (s)': data.get('awarri', {}).get('latency', 0),
+            'Awarri New Latency (s)': data.get('awarri_new', {}).get('latency', 0),
+            'Better Model': data.get('better_model', 'N/A').replace('_', ' ').title()
         }
         rows.append(row)
     
@@ -610,10 +761,10 @@ def create_detailed_metrics_table(language_data):
 def main():
     # Title and description
     st.title("🎤 Transcription API Comparison")
-    st.subheader("Spitch AI vs Awarri - Nigerian Native Languages & English")
+    st.subheader("Spitch vs Awarri (Legacy) vs Awarri New")
     
     st.markdown("""
-    This application compares the performance of **Spitch AI** and **Awarri** transcription APIs 
+    This application compares the performance of **Spitch**, **Awarri (Legacy)**, and **Awarri New** transcription APIs 
     across three Nigerian native languages (**Yoruba**, **Igbo**, **Hausa**) and **English**.
     
     Each language is tested with short, medium, and long audio samples to evaluate:
@@ -628,7 +779,7 @@ def main():
     if not data:
         st.stop()
     
-    # Language tabs - Added English tab
+    # Language tabs
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🇳🇬 Yoruba", "🇳🇬 Igbo", "🇳🇬 Hausa", "🇬🇧 English", "🎙️ Live Test"])
     
     languages = [
@@ -676,53 +827,39 @@ def main():
             if summary:
                 st.header(f"📊 {lang_name} Performance Summary")
                 
-                col1, col2, col3, col4 = st.columns(4)
+                # Average metrics
+                col1, col2, col3 = st.columns(3)
                 
                 with col1:
-                    st.metric(
-                        label="Spitch Avg Accuracy", 
-                        value=f"{summary['spitch']['avg_accuracy']:.1f}%"
-                    )
+                    st.write("**Spitch**")
+                    st.metric("Avg Accuracy", f"{summary['spitch']['avg_accuracy']:.1f}%")
+                    st.metric("Avg Latency", f"{summary['spitch']['avg_latency']:.2f}s")
                 
                 with col2:
-                    st.metric(
-                        label="⚡ Spitch Avg Latency", 
-                        value=f"{summary['spitch']['avg_latency']:.2f}s"
-                    )
+                    st.write("**Awarri (Legacy)**")
+                    st.metric("Avg Accuracy", f"{summary['awarri']['avg_accuracy']:.1f}%")
+                    st.metric("Avg Latency", f"{summary['awarri']['avg_latency']:.2f}s")
                 
                 with col3:
-                    st.metric(
-                        label="Awarri Avg Accuracy", 
-                        value=f"{summary['awarri']['avg_accuracy']:.1f}%"
-                    )
-                
-                with col4:
-                    st.metric(
-                        label="⚡ Awarri Avg Latency", 
-                        value=f"{summary['awarri']['avg_latency']:.2f}s"
-                    )
+                    st.write("**Awarri New**")
+                    st.metric("Avg Accuracy", f"{summary['awarri_new']['avg_accuracy']:.1f}%")
+                    st.metric("Avg Latency", f"{summary['awarri_new']['avg_latency']:.2f}s")
                 
                 # Win/Loss summary
                 st.subheader("Head-to-Head Results")
-                col5, col6, col7 = st.columns(3)
+                col4, col5, col6, col7 = st.columns(4)
+                
+                with col4:
+                    st.metric("🔴 Spitch Wins", summary['spitch']['wins'])
                 
                 with col5:
-                    st.metric(
-                        label="🔴 Spitch Wins", 
-                        value=summary['spitch']['wins']
-                    )
+                    st.metric("🔵 Awarri Wins", summary['awarri']['wins'])
                 
                 with col6:
-                    st.metric(
-                        label="🔵 Awarri Wins", 
-                        value=summary['awarri']['wins']
-                    )
+                    st.metric("🟢 Awarri New Wins", summary['awarri_new']['wins'])
                 
                 with col7:
-                    st.metric(
-                        label="🤝 Ties", 
-                        value=summary['ties']
-                    )
+                    st.metric("🤝 Ties", summary['ties'])
                 
                 # Performance charts
                 if data_arrays:

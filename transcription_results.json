@@ -14,7 +14,13 @@
         "latency": 2.75,
         "accuracy": 10.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Ee, ana m akwụsị ụgwọ akwụkwọ gị n'akaụntụ gị.\", 'language': 'Igbo'}",
+        "translation": "\"Yes, I stopped your book payment on your account yesterday.\"",
+        "latency": 2.75,
+        "accuracy": 0.0
+      }
     },
     "yoruba_short_2.wav": {
       "ground_truth": "Can you check my current data balance now?",
@@ -30,7 +36,13 @@
         "latency": 2.37,
         "accuracy": 40.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"yes, it's crucial for continuous improvement and growth.\", 'language': 'English'}",
+        "translation": "yes, it's crucial for continuous improvement and growth.",
+        "latency": 1.6,
+        "accuracy": 0.0
+      }
     },
     "yoruba_short_3.wav": {
       "ground_truth": "What's the status of my MTN account today?",
@@ -46,7 +58,13 @@
         "latency": 1.81,
         "accuracy": 30.0
       },
-      "better_model": "spitch"
+      "better_model": "tie",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Kí ipò àkọ́lẹ̀ ẹ̀ntẹ̀ mi lónìí', 'language': 'Yoruba'}",
+        "translation": "'What is the status of my appointment today?'",
+        "latency": 2.02,
+        "accuracy": 30.0
+      }
     },
     "yoruba_short_4.wav": {
       "ground_truth": "I need to contact MTN customer support now.",
@@ -62,7 +80,13 @@
         "latency": 3.22,
         "accuracy": 20.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Mụfe ebe a Italián, unu gbara a Emtịn soro banyị?', 'language': 'Igbo'}",
+        "translation": "I am here in Italy, are you all with me?",
+        "latency": 2.15,
+        "accuracy": 0.0
+      }
     },
     "yoruba_short_5.wav": {
       "ground_truth": "How do I buy 1GB of data today?",
@@ -78,7 +102,13 @@
         "latency": 2.14,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ị nwere ike ịgwa ndị ọbọdọ ihe oriri iji gwa ndị ọrụ ihe oriri iji gwa ndị ọrụ ihe oriri?', 'language': 'Igbo'}",
+        "translation": "You can tell the waiters what food to tell the staff what food to tell the staff what food?",
+        "latency": 3.45,
+        "accuracy": 0.0
+      }
     },
     "yoruba_medium_1.wav": {
       "ground_truth": "How can I recharge my MTN phone with airtime quickly?",
@@ -94,7 +124,13 @@
         "latency": 2.6,
         "accuracy": 10.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Ọ na-agbakwụnye mgbagwoju anya na mkpụrụ obi iji nweta mmetụta nke ọma n'etiti ndị ọzọ nọ n'èzí n'etiti ndị ọzọ nọ n'etiti ndị ọzọ nọ n'etiti ndị ọzọ nọ n'etiti ndụ\", 'language': 'Igbo'}",
+        "translation": "The text is in Igbo, not Yoruba. Here is the translation:\n\n\"It complicates the soul to achieve a good feeling among others outside among others among others among others among others in life.\"",
+        "latency": 5.51,
+        "accuracy": 0.0
+      }
     },
     "yoruba_medium_2.wav": {
       "ground_truth": "What's the cheapest data bundle available for a week?",
@@ -110,7 +146,13 @@
         "latency": 2.16,
         "accuracy": 30.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Kí ẹ̀ka dáadáa tó kéré jùlọ fún ọ̀sẹ̀ kan.', 'language': 'Yoruba'}",
+        "translation": "Make sure to take good care of yourself for at least a week.",
+        "latency": 2.24,
+        "accuracy": 0.0
+      }
     },
     "yoruba_medium_3.wav": {
       "ground_truth": "Can I transfer money to another MTN number easily?",
@@ -126,7 +168,13 @@
         "latency": 2.77,
         "accuracy": 25.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Kpamkpam! Ohere inweta ọtụtụ nchekwa n'ime ụlọ ọrụ nka ọdịnala\", 'language': 'Igbo'}",
+        "translation": "\"Absolutely! There is an opportunity to gain a lot of experience in this traditional art industry.\"",
+        "latency": 2.89,
+        "accuracy": 0.0
+      }
     },
     "yoruba_medium_4.wav": {
       "ground_truth": "Why is my network signal so weak in this area?",
@@ -142,7 +190,13 @@
         "latency": 2.51,
         "accuracy": 5.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': ' morning', 'language': 'Yoruba'}",
+        "translation": "morning",
+        "latency": 2.98,
+        "accuracy": 0.0
+      }
     },
     "yoruba_medium_5.wav": {
       "ground_truth": "Please check my MTN bill for the last month.",
@@ -158,7 +212,13 @@
         "latency": 2.58,
         "accuracy": 25.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ị nwere ike ịgwa onye ọ bụla banyere nnọkọ ahụike uche?', 'language': 'Igbo'}",
+        "translation": "Can you tell anyone about the mental health meeting?",
+        "latency": 2.76,
+        "accuracy": 0.0
+      }
     },
     "yoruba_long_1.wav": {
       "ground_truth": "I've been overcharged for international calls I didn't make; can you investigate and process a refund for me please?",
@@ -174,7 +234,13 @@
         "latency": 3.43,
         "accuracy": 35.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Wọ́tí gba owó jùlọ fún mi lórí àwọn ìpè àgbáyé tí mò ń ṣe ayẹ̀wò ẹ̀sùn yí kí ẹ sì da owó náà fún padà jọ', 'language': 'Yoruba'}",
+        "translation": "'Please give me the money for the international calls I am making to investigate this accusation and return the money together.'",
+        "latency": 4.42,
+        "accuracy": 15.0
+      }
     },
     "yoruba_long_2.wav": {
       "ground_truth": "I want to upgrade my plan to include more data and unlimited calls; what's the best option for heavy users?",
@@ -190,7 +256,13 @@
         "latency": 4.52,
         "accuracy": 15.0
       },
-      "better_model": "spitch"
+      "better_model": "tie",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Mo fẹ́ gbé ètò mi sókè, kí n lè ní dìgbà tó pọ̀ sí i, àti kí ìpè má ní ìdíwọ́ èrò ní yóò dára jùlọ fún ẹni tó ń lo púpọ̀', 'language': 'Yoruba'}",
+        "translation": "'I want to improve my plan so that I can have more opportunities, and that the call will not hinder the thoughts that will be best for the person who uses it a lot.'",
+        "latency": 4.73,
+        "accuracy": 15.0
+      }
     },
     "yoruba_long_3.wav": {
       "ground_truth": "My phone isn't receiving texts from other networks despite restarting twice; what steps can I take to fix this?",
@@ -206,7 +278,13 @@
         "latency": 4.53,
         "accuracy": 65.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ji', 'language': 'Yoruba'}",
+        "translation": "Wake",
+        "latency": 2.7,
+        "accuracy": 0.0
+      }
     },
     "yoruba_long_4.wav": {
       "ground_truth": "Can you explain the roaming charges from my Kenya trip last week and how to avoid them next time?",
@@ -222,7 +300,13 @@
         "latency": 3.92,
         "accuracy": 85.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ṣé àwọn òwò ìrìnàjò tí mo gbà lójú ìrìn àjò mi lọ sí Kenya lọ́sẹ̀ tó kọjá àti bí mo ṣe lè yàgò fún wọn nígbà mí', 'language': 'Yoruba'}",
+        "translation": "\"Are the travel expenses I incurred during my trip to Kenya last week and how I can avoid them in the future?\"",
+        "latency": 4.25,
+        "accuracy": 65.0
+      }
     },
     "yoruba_long_5.wav": {
       "ground_truth": "I'm setting up a new MTN SIM for my business; what bundles are best for high-volume SMS and calls?",
@@ -238,7 +322,13 @@
         "latency": 3.2,
         "accuracy": 10.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Mo ṣe ìtọ́sọ́nà sí ọ̀nà oúnjẹ tuntun fún ìsọwọ́rùn, kérésì bọ́ọ̀lù olùdára jùlọ fún ẹ̀sẹ̀ méjì púpọ̀ àti àwọn ìpè tó pọ̀', 'language': 'Yoruba'}",
+        "translation": "I provided guidance on a new diet for weight loss, especially the best protein balls for two meals a day and plenty of snacks.",
+        "latency": 5.18,
+        "accuracy": 0.0
+      }
     }
   },
   "igbo": {
@@ -256,7 +346,13 @@
         "latency": 3.21,
         "accuracy": 85.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Ego ole bụ Airtime fọrọ n'akaụntụ m?\", 'language': 'Igbo'}",
+        "translation": "\"How much is the Airtime left in my account?\"",
+        "latency": 1.88,
+        "accuracy": 95.0
+      }
     },
     "igbo_short_2.wav": {
       "ground_truth": "Can you check my current data balance now?",
@@ -272,7 +368,13 @@
         "latency": 2.36,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ị nwere ike ịnenere m ife owu ballads nkịta?', 'language': 'Igbo'}",
+        "translation": "Can you help me with some dog ballads?",
+        "latency": 1.95,
+        "accuracy": 0.0
+      }
     },
     "igbo_short_3.wav": {
       "ground_truth": "What's the status of my MTN account today?",
@@ -288,7 +390,13 @@
         "latency": 2.25,
         "accuracy": 30.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Kee ihe wu Mtn akaụnt m tataa', 'language': 'Igbo'}",
+        "translation": "What is my Mtn account today?",
+        "latency": 1.8,
+        "accuracy": 85.0
+      }
     },
     "igbo_short_4.wav": {
       "ground_truth": "I need to contact MTN customer support now.",
@@ -304,7 +412,13 @@
         "latency": 2.15,
         "accuracy": 60.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Májọ́ ọ̀rọ̀ mi pọ́, nǹkan tó máa sọ́pọ̀ Kíkà', 'language': 'Yoruba'}",
+        "translation": "\"Don't mix my words, something that will be common in reading.\"",
+        "latency": 2.52,
+        "accuracy": 0.0
+      }
     },
     "igbo_short_5.wav": {
       "ground_truth": "How do I buy 1GB of data today?",
@@ -320,7 +434,13 @@
         "latency": 2.7,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Kedu ka m ga-esi gote one gig data taa?', 'language': 'Igbo'}",
+        "translation": "How can I get one gig of data today?",
+        "latency": 1.74,
+        "accuracy": 90.0
+      }
     },
     "igbo_medium_1.wav": {
       "ground_truth": "How can I recharge my MTN phone with airtime quickly?",
@@ -336,7 +456,13 @@
         "latency": 2.66,
         "accuracy": 15.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Gwa m ka m ga-esi jiri airtime rechajị ekwentị MTN m', 'language': 'Igbo'}",
+        "translation": "Tell me how to recharge my MTN phone with airtime.",
+        "latency": 1.97,
+        "accuracy": 85.0
+      }
     },
     "igbo_medium_2.wav": {
       "ground_truth": "What's the cheapest data bundle available for a week?",
@@ -352,7 +478,13 @@
         "latency": 2.65,
         "accuracy": 15.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Kedu data opekata mpe nwere ike ịnweta maka otu ọnwa?', 'language': 'Igbo'}",
+        "translation": "What data can be accessed for one month?",
+        "latency": 2.39,
+        "accuracy": 25.0
+      }
     },
     "igbo_medium_3.wav": {
       "ground_truth": "Can I transfer money to another MTN number easily?",
@@ -368,7 +500,13 @@
         "latency": 2.66,
         "accuracy": 25.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Enwere m ike ịnye ego ma nye onye ọzọ na-eyuzu Mtn ego na akaụntụ ya', 'language': 'Igbo'}",
+        "translation": "I have the ability to give money and transfer it to someone else who uses Mtn in their account.",
+        "latency": 2.56,
+        "accuracy": 70.0
+      }
     },
     "igbo_medium_4.wav": {
       "ground_truth": "Why is my network signal so weak in this area?",
@@ -384,7 +522,13 @@
         "latency": 0.0,
         "accuracy": 0.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Netwọk ebe a nwere ka ọ dị, netwọk ebe a adịghị mma ma chaa', 'language': 'Igbo'}",
+        "translation": "The network here is as it is, the network here is not good and weak.",
+        "latency": 2.59,
+        "accuracy": 30.0
+      }
     },
     "igbo_medium_5.wav": {
       "ground_truth": "Please check my MTN bill for the last month.",
@@ -400,7 +544,13 @@
         "latency": 3.25,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Nyere m fewe egwu ji ndị MTN n'ọnwa gara aga\", 'language': 'Igbo'}",
+        "translation": "\"Help me download the songs by MTN from last month.\"",
+        "latency": 2.04,
+        "accuracy": 10.0
+      }
     },
     "igbo_long_1.wav": {
       "ground_truth": "I've been overcharged for international calls I didn't make; can you investigate and process a refund for me please?",
@@ -416,7 +566,13 @@
         "latency": 5.75,
         "accuracy": 5.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ọ nwere ịntanashọna kọl ụbọchị a, mana a bịara m ụfọdụ na ị nwere air time ego karịrị akarị Ị nwere ike ịgwa m otu ife a siri mee ma ọ bụrụ na ị ga-esi weghachi ego ahụ?', 'language': 'Igbo'}",
+        "translation": "There is a national call today, but I came across some information that you have airtime money that is more than necessary. Can you tell me how this happened and if you can recover that money?",
+        "latency": 5.18,
+        "accuracy": 10.0
+      }
     },
     "igbo_long_2.wav": {
       "ground_truth": "I want to upgrade my plan to include more data and unlimited calls; what's the best option for heavy users?",
@@ -432,7 +588,13 @@
         "latency": 3.44,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Achọrọ m ịme ọkredị mtm plan m ka ọ wee nwee data buru ibu ka efe m nwere ike ime wee nweta efe a', 'language': 'Igbo'}",
+        "translation": "I want to make my MTM plan so that it can have a large data allowance so that I can use it and get this allowance.",
+        "latency": 3.22,
+        "accuracy": 35.0
+      }
     },
     "igbo_long_3.wav": {
       "ground_truth": "My phone isn't receiving texts from other networks despite restarting twice; what steps can I take to fix this?",
@@ -448,7 +610,13 @@
         "latency": 3.91,
         "accuracy": 0.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Afụrụ m na a na-enweta mmasị n'echiche ndị netwọkụ ndị ọzọ Gbalịrị m ịbụ onye ọ bụla onye ọ bụla, ọ bụghị na ọ bụghị ihe fọrọ ihe gbanwere gbanwee Kedu ka m ga-esi meziwanye ha?\", 'language': 'Igbo'}",
+        "translation": "\"I have noticed that interest is generated in the ideas of other networks. I tried to be someone for everyone, but it is not something that can easily change. How can I improve them?\"",
+        "latency": 5.59,
+        "accuracy": 0.0
+      }
     },
     "igbo_long_4.wav": {
       "ground_truth": "Can you explain the roaming charges from my Kenya trip last week and how to avoid them next time?",
@@ -464,7 +632,13 @@
         "latency": 5.87,
         "accuracy": 0.0
       },
-      "better_model": "spitch"
+      "better_model": "tie",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Anọ m nke ya na izu ụka gara aga Mgbe anyị na-ahụ na anyị nwere ike ịgbaso ihe ruru unyi, ọ dị ka ego ahụ ruru unyi karịrị akarị Kedu ka anyị nwere ike isi nye onye ọrụ afọ ofufo oge ọzọ?', 'language': 'Igbo'}",
+        "translation": "I was with him last week when we realized that we could follow something that was worth a lot, it seemed like the money was worth more than expected. How can we give the worker another chance?",
+        "latency": 5.43,
+        "accuracy": 0.0
+      }
     },
     "igbo_long_5.wav": {
       "ground_truth": "I'm setting up a new MTN SIM for my business; what bundles are best for high-volume SMS and calls?",
@@ -480,7 +654,13 @@
         "latency": 5.55,
         "accuracy": 10.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Achọrọ m ịnweta isi m gbasara MTN Kee maka bizinesi m? Kedu ka m ga-esi nweta isi m nwere bundles ọkụ nke m nwere ike iji na-eme colu na SMS?', 'language': 'Igbo'}",
+        "translation": "I want to get my head around MTN Kee for my business? How can I get my head around the data bundles that I can use for calls and SMS?",
+        "latency": 4.05,
+        "accuracy": 45.0
+      }
     }
   },
   "hausa": {
@@ -498,7 +678,13 @@
         "latency": 2.15,
         "accuracy": 70.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Katin nawa ya rage a akawun ɗi na?', 'language': 'Hausa'}",
+        "translation": "How much money is left in my account?",
+        "latency": 1.62,
+        "accuracy": 60.0
+      }
     },
     "hausa_short_2.wav": {
       "ground_truth": "Can you check my current data balance now?",
@@ -514,7 +700,13 @@
         "latency": 1.84,
         "accuracy": 25.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Za ka iya duba ragowar datan ka yanzun?', 'language': 'Hausa'}",
+        "translation": "Can you check your remaining data now?",
+        "latency": 1.67,
+        "accuracy": 75.0
+      }
     },
     "hausa_short_3.wav": {
       "ground_truth": "What's the status of my MTN account today?",
@@ -530,7 +722,13 @@
         "latency": 2.6,
         "accuracy": 25.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Me ƴancin akant ɗin yake ciki yau?', 'language': 'Hausa'}",
+        "translation": "What is the content of the account today?",
+        "latency": 1.86,
+        "accuracy": 30.0
+      }
     },
     "hausa_short_4.wav": {
       "ground_truth": "I need to contact MTN customer support now.",
@@ -546,7 +744,13 @@
         "latency": 2.51,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Lallai, ina so in sami yadda zan iya magana da MTN customer support yanzu', 'language': 'Hausa'}",
+        "translation": "\"Indeed, I want to know how I can talk to MTN customer support now.\"",
+        "latency": 2.26,
+        "accuracy": 75.0
+      }
     },
     "hausa_short_5.wav": {
       "ground_truth": "How do I buy 1GB of data today?",
@@ -562,7 +766,13 @@
         "latency": 2.12,
         "accuracy": 0.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'know anyone you can ask in detail?', 'language': 'English'}",
+        "translation": "know anyone you can ask in detail?",
+        "latency": 1.39,
+        "accuracy": 0.0
+      }
     },
     "hausa_medium_1.wav": {
       "ground_truth": "How can I recharge my MTN phone with airtime quickly?",
@@ -578,7 +788,13 @@
         "latency": 10.71,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Lallai zan sa kati na 'yancin yanzu\", 'language': 'Hausa'}",
+        "translation": "\"Surely I will put my freedom card now.\"",
+        "latency": 1.79,
+        "accuracy": 0.0
+      }
     },
     "hausa_medium_2.wav": {
       "ground_truth": "What's the cheapest data bundle available for a week?",
@@ -594,7 +810,13 @@
         "latency": 2.23,
         "accuracy": 10.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'adapting after success or failure ensures sustainability.', 'language': 'English'}",
+        "translation": "adapting after success or failure ensures sustainability.",
+        "latency": 1.47,
+        "accuracy": 0.0
+      }
     },
     "hausa_medium_3.wav": {
       "ground_truth": "Can I transfer money to another MTN number easily?",
@@ -610,7 +832,13 @@
         "latency": 2.52,
         "accuracy": 0.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Zan iya tura kudi ma waniy m can nan bada sauki', 'language': 'Hausa'}",
+        "translation": "'I can easily send money to someone here.'",
+        "latency": 1.83,
+        "accuracy": 25.0
+      }
     },
     "hausa_medium_4.wav": {
       "ground_truth": "Why is my network signal so weak in this area?",
@@ -626,7 +854,13 @@
         "latency": 2.7,
         "accuracy": 0.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Me yasa inifom ɗi na bai da ƙarfi ko kaɗai a wannan anguwan?', 'language': 'Hausa'}",
+        "translation": "'Why is my uniform not strong or durable in this neighborhood?'",
+        "latency": 2.34,
+        "accuracy": 10.0
+      }
     },
     "hausa_medium_5.wav": {
       "ground_truth": "Please check my MTN bill for the last month.",
@@ -642,7 +876,13 @@
         "latency": 2.93,
         "accuracy": 10.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Danlaka, taya ni duba bil ɗina na ƴancin na wancan watan.', 'language': 'Hausa'}",
+        "translation": "Danlaka, help me check my freedom bill from last month.",
+        "latency": 2.06,
+        "accuracy": 30.0
+      }
     },
     "hausa_long_1.wav": {
       "ground_truth": "I've been overcharged for international calls I didn't make; can you investigate and process a refund for me please?",
@@ -658,7 +898,13 @@
         "latency": 2.96,
         "accuracy": 10.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Gaskiya sun chajeni akan waya da yan kasan wajen zaman da ban magi ba, da'alla a ka iya duba mun ga me ke faruwa a ciki saboda abin dogaro ne\", 'language': 'Hausa'}",
+        "translation": "\"Honestly, they have charged me on the phone and the traders in the area where I did not speak, so they can check to see what is happening inside because it is reliable.\"",
+        "latency": 3.28,
+        "accuracy": 10.0
+      }
     },
     "hausa_long_2.wav": {
       "ground_truth": "I want to upgrade my plan to include more data and unlimited calls; what's the best option for heavy users?",
@@ -674,7 +920,13 @@
         "latency": 3.53,
         "accuracy": 5.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ina son in ɗaga fitulan ɗin da nake amfani da shi saboda ina son in ɗaga waya ta kuma in ƙara jita, Allah wanne kake ganin zayyafan wanda yake amfani da shi sosai?', 'language': 'Hausa'}",
+        "translation": "'I want to raise the lights that I use because I want to raise my phone and hear more, God, who do you think is the one who uses it a lot?'",
+        "latency": 4.1,
+        "accuracy": 5.0
+      }
     },
     "hausa_long_3.wav": {
       "ground_truth": "My phone isn't receiving texts from other networks despite restarting twice; what steps can I take to fix this?",
@@ -690,7 +942,13 @@
         "latency": 3.4,
         "accuracy": 10.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Bana iya ganin tech daga wayanda suke amfani da wani layi kuma na kuna wayanda na kashe su biyu, kake ganin zan iya gyara wannan matsalar', 'language': 'Hausa'}",
+        "translation": "'I can't see the tech from those using a different line, and I have turned off both of them. Do you think I can fix this problem?'",
+        "latency": 3.1,
+        "accuracy": 15.0
+      }
     },
     "hausa_long_4.wav": {
       "ground_truth": "Can you explain the roaming charges from my Kenya trip last week and how to avoid them next time?",
@@ -706,7 +964,13 @@
         "latency": 3.97,
         "accuracy": 5.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Da la'akari da bayanin homing chajes da suka bani a lokacin da naje wancan satin, kuma ina so in san yadda yake aiki yadda kuma zan yi\", 'language': 'Hausa'}",
+        "translation": "\"Considering the explanation of the homing charges they gave me when I went last week, I want to know how it works and how I can do it.\"",
+        "latency": 3.2,
+        "accuracy": 30.0
+      }
     },
     "hausa_long_5.wav": {
       "ground_truth": "I'm setting up a new MTN SIM for my business; what bundles are best for high-volume SMS and calls?",
@@ -722,7 +986,13 @@
         "latency": 8.61,
         "accuracy": 5.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Ina son in na siya MTN shim ma bizines yana Me kake ganin wani gwandali ya kamata in yi jus saboda ina takes da waya sosai-sosai', 'language': 'Hausa'}",
+        "translation": "'I want to buy an MTN SIM card for my business. What do you think I should do because I really need a phone very much?'",
+        "latency": 3.1,
+        "accuracy": 25.0
+      }
     }
   },
   "english": {
@@ -740,7 +1010,13 @@
         "latency": 2.4,
         "accuracy": 85.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'how much air time is left in my account?', 'language': 'English'}",
+        "translation": "{'audio_txt': 'how much air time is left in my account?', 'language': 'English'}",
+        "latency": 1.4,
+        "accuracy": 95.0
+      }
     },
     "english_short_2.wav": {
       "ground_truth": "Can you check my current data balance now?",
@@ -756,7 +1032,13 @@
         "latency": 1.63,
         "accuracy": 100.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'can you check my current data balance now?', 'language': 'English'}",
+        "translation": "{'audio_txt': 'can you check my current data balance now?', 'language': 'English'}",
+        "latency": 1.37,
+        "accuracy": 100.0
+      }
     },
     "english_short_3.wav": {
       "ground_truth": "What's the status of my MTN account today?",
@@ -772,7 +1054,13 @@
         "latency": 1.84,
         "accuracy": 85.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"what's the status of my mtn account today?\", 'language': 'English'}",
+        "translation": "{'audio_txt': \"what's the status of my mtn account today?\", 'language': 'English'}",
+        "latency": 1.48,
+        "accuracy": 100.0
+      }
     },
     "english_short_4.wav": {
       "ground_truth": "I need to contact MTN customer support now.",
@@ -788,7 +1076,13 @@
         "latency": 1.55,
         "accuracy": 70.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'i need to contact mtn support now.', 'language': 'English'}",
+        "translation": "{'audio_txt': 'i need to contact mtn support now.', 'language': 'English'}",
+        "latency": 1.42,
+        "accuracy": 95.0
+      }
     },
     "english_short_5.wav": {
       "ground_truth": "How do I buy 1GB of data today?",
@@ -804,7 +1098,13 @@
         "latency": 2.33,
         "accuracy": 95.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Tabbas, yana taimakawa wajen kula da kula da kula da kula da kula da kula da kula da kula', 'language': 'Hausa'}",
+        "translation": "{'audio_txt': 'Tabbas, yana taimakawa wajen kula da kula da kula da kula da kula da kula da kula da kula', 'language': 'Hausa'}",
+        "latency": 2.43,
+        "accuracy": 0.0
+      }
     },
     "english_medium_1.wav": {
       "ground_truth": "How can I recharge my MTN phone with airtime quickly?",
@@ -820,7 +1120,13 @@
         "latency": 1.69,
         "accuracy": 100.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'how can i recharge my empty headphones with airtime quickly?', 'language': 'English'}",
+        "translation": "{'audio_txt': 'how can i recharge my empty headphones with airtime quickly?', 'language': 'English'}",
+        "latency": 1.5,
+        "accuracy": 25.0
+      }
     },
     "english_medium_2.wav": {
       "ground_truth": "What's the cheapest data bundle available for a week?",
@@ -836,7 +1142,13 @@
         "latency": 1.89,
         "accuracy": 10.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"what's the cheapest data bundle available for a week?\", 'language': 'English'}",
+        "translation": "{'audio_txt': \"what's the cheapest data bundle available for a week?\", 'language': 'English'}",
+        "latency": 1.5,
+        "accuracy": 100.0
+      }
     },
     "english_medium_3.wav": {
       "ground_truth": "Can I transfer money to another MTN number easily?",
@@ -852,7 +1164,13 @@
         "latency": 1.69,
         "accuracy": 85.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'can i transfer money to another mtn number easily?', 'language': 'English'}",
+        "translation": "{'audio_txt': 'can i transfer money to another mtn number easily?', 'language': 'English'}",
+        "latency": 1.49,
+        "accuracy": 100.0
+      }
     },
     "english_medium_4.wav": {
       "ground_truth": "Why is my network signal so weak in this area?",
@@ -868,7 +1186,13 @@
         "latency": 2.41,
         "accuracy": 100.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Wo ìmọ̀ ẹ̀lẹ́trofi máa fún mi kìí ṣe rẹ̀.', 'language': 'Yoruba'}",
+        "translation": "{'audio_txt': 'Wo ìmọ̀ ẹ̀lẹ́trofi máa fún mi kìí ṣe rẹ̀.', 'language': 'Yoruba'}",
+        "latency": 2.41,
+        "accuracy": 0.0
+      }
     },
     "english_medium_5.wav": {
       "ground_truth": "Please check my MTN bill for the last month.",
@@ -884,7 +1208,13 @@
         "latency": 1.35,
         "accuracy": 30.0
       },
-      "better_model": "awarri"
+      "better_model": "awarri",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"Ee, anyị nwere ike ije ije n'ime ebe ọ bụla anyị nọ ebe ọ bụla\", 'language': 'Igbo'}",
+        "translation": "{'audio_txt': \"Ee, anyị nwere ike ije ije n'ime ebe ọ bụla anyị nọ ebe ọ bụla\", 'language': 'Igbo'}",
+        "latency": 2.5,
+        "accuracy": 0.0
+      }
     },
     "english_long_1.wav": {
       "ground_truth": "I've been overcharged for international calls I didn't make; can you investigate and process a refund for me please?",
@@ -900,7 +1230,13 @@
         "latency": 1.94,
         "accuracy": 70.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"i've been charged for intentional cause that didn't make. can you investigate this and process a refund for me, please?\", 'language': 'English'}",
+        "translation": "{'audio_txt': \"i've been charged for intentional cause that didn't make. can you investigate this and process a refund for me, please?\", 'language': 'English'}",
+        "latency": 2.16,
+        "accuracy": 65.0
+      }
     },
     "english_long_2.wav": {
       "ground_truth": "I want to upgrade my plan to include more data and unlimited calls; what's the best option for heavy users?",
@@ -916,7 +1252,13 @@
         "latency": 2.15,
         "accuracy": 95.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"i want to upgrade my plan to include more data and unlimited calls. what's the best option for heavy users?\", 'language': 'English'}",
+        "translation": "{'audio_txt': \"i want to upgrade my plan to include more data and unlimited calls. what's the best option for heavy users?\", 'language': 'English'}",
+        "latency": 2.01,
+        "accuracy": 100.0
+      }
     },
     "english_long_3.wav": {
       "ground_truth": "My phone isn't receiving texts from other networks despite restarting twice; what steps can I take to fix this?",
@@ -932,7 +1274,13 @@
         "latency": 2.9,
         "accuracy": 100.0
       },
-      "better_model": "spitch"
+      "better_model": "awarri_new",
+      "awarri_new": {
+        "transcription": "{'audio_txt': \"my phone isn't receiving text from other networks despite restarting twice. what steps can i take to fix this?\", 'language': 'English'}",
+        "translation": "{'audio_txt': \"my phone isn't receiving text from other networks despite restarting twice. what steps can i take to fix this?\", 'language': 'English'}",
+        "latency": 2.01,
+        "accuracy": 98.5
+      }
     },
     "english_long_4.wav": {
       "ground_truth": "Can you explain the roaming charges from my Kenya trip last week and how to avoid them next time?",
@@ -948,7 +1296,13 @@
         "latency": 2.07,
         "accuracy": 95.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'Gr gbẹ́nì Róní jáde, kò mọ̀ kí n yàtọ̀ láti aláàbọ̀ ọmọdé mẹ́ta.', 'language': 'Yoruba'}",
+        "translation": "{'audio_txt': 'Gr gbẹ́nì Róní jáde, kò mọ̀ kí n yàtọ̀ láti aláàbọ̀ ọmọdé mẹ́ta.', 'language': 'Yoruba'}",
+        "latency": 3.07,
+        "accuracy": 0.0
+      }
     },
     "english_long_5.wav": {
       "ground_truth": "I'm setting up a new MTN SIM for my business; what bundles are best for high-volume SMS and calls?",
@@ -964,7 +1318,13 @@
         "latency": 2.17,
         "accuracy": 85.0
       },
-      "better_model": "spitch"
+      "better_model": "spitch",
+      "awarri_new": {
+        "transcription": "{'audio_txt': 'i dey set up a new mtn scene for my business, what bundles are best for high-volume sms and calls?', 'language': 'Pidgin'}",
+        "translation": "{'audio_txt': 'i dey set up a new mtn scene for my business, what bundles are best for high-volume sms and calls?', 'language': 'Pidgin'}",
+        "latency": 28.59,
+        "accuracy": 85.0
+      }
     }
   }
 }
